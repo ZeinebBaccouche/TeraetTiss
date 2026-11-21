@@ -1,0 +1,37 @@
+<a [routerLink]="['/produit', produit().id]" class="block group h-full">
+  <div class="bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full">
+    <div class="h-60 overflow-hidden bg-gray-100 relative">
+      <img
+        [src]="produit().imageUrl"
+        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+      />
+      @if (!produit().disponible) {
+        <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md shadow">
+          Rupture
+        </div>
+      }
+    </div>
+    <div class="p-5 flex flex-col flex-grow">
+      <span class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">
+        {{ produit().categorie }}
+      </span>
+      <h3 class="text-lg font-extrabold text-gray-900 mb-2 leading-tight group-hover:text-amber-700 transition-colors">
+        {{ produit().nom }}
+      </h3>
+      
+      <p class="text-sm text-gray-500 mb-4 flex items-center gap-1">
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        {{ produit().regionOrigine }}
+      </p>
+      
+      <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+        <span class="text-2xl font-black text-gray-900">
+          {{ produit().prix }} <span class="text-sm font-semibold text-amber-600">DT</span>
+        </span>
+        <span class="bg-amber-50 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-lg group-hover:bg-amber-600 group-hover:text-white transition-colors">
+          Voir détails
+        </span>
+      </div>
+    </div>
+  </div>
+</a>
