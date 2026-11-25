@@ -9,17 +9,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './produit-list.html',
 })
 export class ProduitList implements OnInit {
-
   private produitservice = inject(ProduitService);
-  ngOnInit(): void {
-    this.produitservice.getProduits().subscribe();
-  }
-
+  
   rechercheNom = signal<string>('');
   recherchePrix = signal<string>('');
 
   produitsAffiches = computed(() => {
-    const nom = this.rechercheNom();
+    const nom = this.rechercheNom().trim();
     const prixTexte = this.recherchePrix();
     let prixNombre: number | null = null;
 
@@ -28,9 +24,15 @@ export class ProduitList implements OnInit {
     }
 
     if (nom === '' && prixNombre === null) {
-      return this.produitservice.produits();
+      return this.produitservice.produits().filter(p => p.disponible === true);
     }
 
     return this.produitservice.rechercher(nom, prixNombre);
   });
+
+  ngOnInit(): void {
+    if (this.produitservice.produits().length === 0) {
+      this.produitservice.getProduits().subscribe();
+    }
+  }
 }

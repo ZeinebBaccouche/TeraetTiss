@@ -1,23 +1,85 @@
-<section class="py-10 px-4 max-w-3xl mx-auto">
-  
-  <div class="bg-white p-8 rounded-lg shadow-md">
-    <h1 class="text-3xl font-bold text-amber-700 mb-4">À propos de Tera & Tissu</h1>
+<section class="min-h-screen bg-stone-50 py-16 px-4">
+  <div class="max-w-4xl mx-auto space-y-12">
     
-    <p class="text-gray-700 mb-4">
-      Tera & Tissu est un site marchand dédié à la valorisation de l'artisanat local tunisien. 
-      Nous mettons en relation directe les artisans de nos régions avec les amoureux du fait-main.
-    </p>
+    <!-- En-tête (Hero) -->
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-emerald-800 mb-4 tracking-tight">
+        L'histoire de <span class="text-emerald-600">Tera & Tissu</span>
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Plus qu'un site marchand, une passerelle entre les artisans tunisiens et les amoureux du fait-main.
+      </p>
+    </div>
 
-    <h2 class="text-xl font-bold text-gray-800 mt-8 mb-2">L'équipe du projet</h2>
-    <ul class="list-disc list-inside text-gray-600">
-      <li>Baccouche Zeineb (DSI 201)</li>
-      <li>Abidi Nour El Houda (DSI 201)</li>
-    </ul>
+    <!-- Philosophie du projet -->
+    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-stone-100">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+        <span class="text-emerald-600">✦</span> Notre démarche
+      </h2>
+      <div class="space-y-4 text-gray-600 leading-relaxed">
+        <p>
+          <strong>Tera & Tissu</strong> est né d'une volonté simple : mettre en lumière la richesse de l'artisanat tunisien. 
+          De la poterie de Nabeul aux tissages de Kairouan, chaque pièce raconte une histoire, celle d'un savoir-faire transmis de génération en génération.
+        </p>
+        <p>
+          Notre plateforme permet de découvrir, d'apprécier et de commander ces trésors authentiques en toute simplicité. 
+          En choisissant Tera & Tissu, vous soutenez directement les artisans locaux et participez à la préservation de notre patrimoine culturel.
+        </p>
+      </div>
+    </div>
 
-    <h2 class="text-xl font-bold text-gray-800 mt-8 mb-2">Technologies utilisées</h2>
-    <p class="text-gray-600">
-      Ce projet a été développé avec Angular (basé sur les Signals) et stylisé avec Tailwind CSS.
-    </p>
+    <!-- L'équipe -->
+    <div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Les créatrices du projet</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Membre 1 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex items-center gap-4">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-bold text-xl">
+            ZB
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900">Baccouche Zeineb</h3>
+            <p class="text-sm text-emerald-600 font-semibold">DSI 201</p>
+          </div>
+        </div>
+
+        <!-- Membre 2 -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex items-center gap-4">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-bold text-xl">
+            AN
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900">Abidi Nour El Houda</h3>
+            <p class="text-sm text-emerald-600 font-semibold">DSI 201</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Technologies -->
+    <div class="bg-emerald-900 text-white p-8 md:p-10 rounded-2xl shadow-md">
+      <h2 class="text-2xl font-bold mb-6 text-emerald-300">Technologies & Architecture</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="bg-emerald-800/50 p-4 rounded-xl">
+          <p class="font-bold text-lg">Angular</p>
+          <p class="text-xs text-emerald-200 mt-1">Signals & Forms</p>
+        </div>
+        <div class="bg-emerald-800/50 p-4 rounded-xl">
+          <p class="font-bold text-lg">Tailwind</p>
+          <p class="text-xs text-emerald-200 mt-1">Design Responsive</p>
+        </div>
+        <div class="bg-emerald-800/50 p-4 rounded-xl">
+          <p class="font-bold text-lg">REST API</p>
+          <p class="text-xs text-emerald-200 mt-1">Json Server</p>
+        </div>
+        <div class="bg-emerald-800/50 p-4 rounded-xl">
+          <p class="font-bold text-lg">Git</p>
+          <p class="text-xs text-emerald-200 mt-1">Versioning</p>
+        </div>
+      </div>
+    </div>
+
   </div>
-
 </section>

@@ -5,8 +5,8 @@
       Tera & Tissu <span class="text-amber-400 text-sm">Admin</span>
     </a>
 
-    <div class="flex gap-6 text-sm font-semibold">
-      <a routerLink="/admin/produits" routerLinkActive="text-amber-400" class="hover:text-amber-400 transition-colors">
+    <div class="flex gap-6 text-sm font-semibold items-center">
+      <a routerLink="/admin/dashboard" routerLinkActive="text-amber-400" class="hover:text-amber-400 transition-colors">
         Produits
       </a>
       <a routerLink="/admin/demandes" routerLinkActive="text-amber-400" class="hover:text-amber-400 transition-colors">
@@ -15,9 +15,11 @@
       <a routerLink="/admin/mot-de-passe" routerLinkActive="text-amber-400" class="hover:text-amber-400 transition-colors">
         Mot de passe
       </a>
-      <a routerLink="/admin/login" class="text-red-400 hover:text-red-300 transition-colors">
+      
+      <button (click)="seDeconnecter()" 
+              class="text-red-400 hover:text-red-300 transition-colors cursor-pointer">
         Déconnexion
-      </a>
+      </button>
     </div>
   </div>
 </nav>

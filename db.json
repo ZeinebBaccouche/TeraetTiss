@@ -9,12 +9,38 @@
       "imageUrl": "/images/vase.avif",
       "artisan": "Mohamed Ben Salem",
       "regionOrigine": "Nabeul",
-      "stock": 12,
+      "stock": 8,
       "disponible": true,
       "dateAjout": "2026-01-10",
       "avis": [
-        { "id": "a1", "nomClient": "Sarra", "note": 5, "commentaire": "Magnifique vase, très bien emballé !", "date": "2026-01-15" },
-        { "id": "a2", "nomClient": "Yassine", "note": 4, "commentaire": "Très belle finition, un peu petit.", "date": "2026-01-20" }
+        {
+          "id": "a1",
+          "nomClient": "Sarra",
+          "note": 5,
+          "commentaire": "Magnifique vase, très bien emballé !",
+          "date": "2026-01-15"
+        },
+        {
+          "id": "a2",
+          "nomClient": "Yassine",
+          "note": 4,
+          "commentaire": "Très belle finition, un peu petit.",
+          "date": "2026-01-20"
+        },
+        {
+          "id": "1795535906712",
+          "nomClient": "Zeineb",
+          "note": 5,
+          "commentaire": "Merci pour le beau packaging",
+          "date": "2026-11-24"
+        },
+        {
+          "id": "1795627452396",
+          "nomClient": "olfa",
+          "note": 5,
+          "commentaire": "bon rapport qualité prix",
+          "date": "2026-11-25"
+        }
       ]
     },
     {
@@ -26,10 +52,18 @@
       "imageUrl": "/images/bol.jfif",
       "artisan": "Hassan Mabrouk",
       "regionOrigine": "Tunis",
-      "stock": 8,
+      "stock": 7,
       "disponible": true,
       "dateAjout": "2026-03-05",
-      "avis": []
+      "avis": [
+        {
+          "id": "1795536024635",
+          "nomClient": "Amel",
+          "note": "4",
+          "commentaire": "Très bonne qualitée",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "id": "p9",
@@ -41,7 +75,7 @@
       "artisan": "Nizar Jaziri",
       "regionOrigine": "Nabeul",
       "stock": 0,
-      "disponible": false,
+      "disponible": true,
       "dateAjout": "2026-03-15",
       "avis": []
     },
@@ -58,7 +92,20 @@
       "disponible": true,
       "dateAjout": "2026-02-03",
       "avis": [
-        { "id": "a3", "nomClient": "Leila", "note": 5, "commentaire": "Superbe tapis, couleurs vives.", "date": "2026-02-10" }
+        {
+          "id": "a3",
+          "nomClient": "Leila",
+          "note": 5,
+          "commentaire": "Superbe tapis, couleurs vives.",
+          "date": "2026-02-10"
+        },
+        {
+          "id": "1795536048043",
+          "nomClient": "Molka",
+          "note": 5,
+          "commentaire": "",
+          "date": "2026-11-24"
+        }
       ]
     },
     {
@@ -73,7 +120,15 @@
       "stock": 15,
       "disponible": true,
       "dateAjout": "2026-03-08",
-      "avis": []
+      "avis": [
+        {
+          "id": "1795536100312",
+          "nomClient": "Ahlem",
+          "note": "4",
+          "commentaire": "Magnifique",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "id": "p10",
@@ -99,7 +154,7 @@
       "artisan": "Ali Gharbi",
       "regionOrigine": "Sfax",
       "stock": 0,
-      "disponible": false,
+      "disponible": true,
       "dateAjout": "2026-02-18",
       "avis": []
     },
@@ -144,7 +199,20 @@
       "disponible": true,
       "dateAjout": "2026-03-01",
       "avis": [
-        { "id": "a4", "nomClient": "Nour", "note": 4, "commentaire": "Très doux pour la peau.", "date": "2026-03-05" }
+        {
+          "id": "a4",
+          "nomClient": "Nour",
+          "note": 4,
+          "commentaire": "Très doux pour la peau.",
+          "date": "2026-03-05"
+        },
+        {
+          "id": "1795536253856",
+          "nomClient": "Ameni",
+          "note": "3",
+          "commentaire": "Bonne texture",
+          "date": "2026-11-24"
+        }
       ]
     },
     {
@@ -173,14 +241,158 @@
       "stock": 30,
       "disponible": true,
       "dateAjout": "2026-03-22",
-      "avis": []
+      "avis": [
+        {
+          "id": "1795535713435",
+          "nomClient": "Zeineb",
+          "note": 5,
+          "commentaire": "Très bonne odeur",
+          "date": "2026-11-24"
+        }
+      ]
     }
   ],
   "admins": [
-    { "id": "ad1", "username": "admin", "email": "admin@tera-tissu.tn", "password": "admin123" }
+    {
+      "id": "ad1",
+      "username": "admin",
+      "email": "admin@tera-tissu.tn",
+      "password": "zeineb123"
+    }
   ],
   "demandesAchat": [
-    { "id": "d1", "nomClient": "Ines Ben Ali", "emailClient": "ines@mail.com", "produitId": "p1", "nomProduit": "Vase en poterie de Nabeul", "quantite": 2, "prixTotal": 91, "dateDemande": "2026-03-10", "statut": "En attente" },
-    { "id": "d2", "nomClient": "Karim Jaziri", "emailClient": "karim@mail.com", "produitId": "p2", "nomProduit": "Tapis tissé berbère", "quantite": 1, "prixTotal": 180, "dateDemande": "2026-03-12", "statut": "Traitée" }
-  ]
+    {
+      "id": "d1",
+      "nomClient": "Ines Ben Ali",
+      "emailClient": "ines@mail.com",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 2,
+      "prixTotal": 91,
+      "dateDemande": "2026-03-10",
+      "statut": "En attente"
+    },
+    {
+      "id": "d2",
+      "nomClient": "Karim Jaziri",
+      "emailClient": "karim@mail.com",
+      "produitId": "p2",
+      "nomProduit": "Tapis tissé berbère",
+      "quantite": 1,
+      "prixTotal": 180,
+      "dateDemande": "2026-03-12",
+      "statut": "En attente"
+    },
+    {
+      "nomClient": "zeineb",
+      "emailClient": "zeinebbaccouche1@gmail.com",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 1,
+      "prixTotal": 45.5,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "nrDJUu5ygiY"
+    },
+    {
+      "nomClient": "zeineb baccouche",
+      "emailClient": "zeinebbaccouche1@gmail.com",
+      "produitId": "p5",
+      "nomProduit": "Set de 6 bols en céramique",
+      "quantite": 1,
+      "prixTotal": 40,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "23zvvGViCNs"
+    },
+    {
+      "nomClient": "nour el houda abidi",
+      "emailClient": "ghjkl@qsd.edf",
+      "produitId": "p5",
+      "nomProduit": "Set de 6 bols en céramique",
+      "quantite": 27,
+      "prixTotal": 1080,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "4d_JMmBOcu8"
+    },
+    {
+      "nomClient": "zeineb baccouche",
+      "emailClient": "zeinebbaccouche1@gmail.com",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 1,
+      "prixTotal": 45.5,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "53DhUInuTW4"
+    },
+    {
+      "nomClient": "zeineb",
+      "emailClient": "zeinebbaccouche1@gmail.com",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 1,
+      "prixTotal": 45.5,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "gLtQvk2x0oE"
+    },
+    {
+      "nomClient": "nour el houda",
+      "emailClient": "azer@mmll.hsjk",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 1,
+      "prixTotal": 45.5,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "QZ2S_32A4RM"
+    },
+    {
+      "nomClient": "wxdcfv",
+      "emailClient": "zeinebbaccouche1@gmail.com",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 2,
+      "prixTotal": 91,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "XgYvjQvIN_E"
+    },
+    {
+      "nomClient": "zeineb baccouche",
+      "emailClient": "zeinebbaccouche1@gmail.com",
+      "produitId": "p5",
+      "nomProduit": "Set de 6 bols en céramique",
+      "quantite": 1,
+      "prixTotal": 40,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "bOpNKdJiOCM"
+    },
+    {
+      "nomClient": "olfa",
+      "emailClient": "olfa@gmail.com",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 1,
+      "prixTotal": 45.5,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "5pc-MhSoyH0"
+    },
+    {
+      "nomClient": "sdfg",
+      "emailClient": "zeinebbaccouche1@gmail.com",
+      "produitId": "p1",
+      "nomProduit": "Vase en poterie de Nabeul",
+      "quantite": 1,
+      "prixTotal": 45.5,
+      "dateDemande": "2026-11-25",
+      "statut": "En attente",
+      "id": "-l5fMBtFuRI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

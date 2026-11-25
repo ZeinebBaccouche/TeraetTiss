@@ -1,95 +1,147 @@
 <section class="py-10 px-4 max-w-4xl mx-auto">
 
   @if (produit(); as p) {
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden md:flex">
-      <div class="md:w-1/2">
-        <img [src]="p.imageUrl" class="w-full h-full object-cover" />
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden md:flex">
+    <div class="md:w-1/2">
+      <img [src]="p.imageUrl" class="w-full h-full object-cover" />
+    </div>
+    <div class="p-6 md:w-1/2 flex flex-col justify-between">
+      <div>
+        <span class="text-sm font-semibold text-emerald-700 uppercase tracking-wide">
+          {{ p.categorie }}
+        </span>
+        <h1 class="text-3xl font-bold text-gray-800 mt-2">
+          {{ p.nom }}
+        </h1>
+        <p class="text-gray-600 mt-4">
+          {{ p.description }}
+        </p>
+        <div class="mt-4 text-sm text-gray-500 space-y-1">
+          <p><strong>Artisan :</strong> {{ p.artisan }}</p>
+          <p><strong>Région :</strong> {{ p.regionOrigine }}</p>
+          <p><strong>Date d'ajout :</strong> {{ p.dateAjout | date:'dd/MM/yyyy' }}</p>
+        </div>
       </div>
-      <div class="p-6 md:w-1/2 flex flex-col justify-between">
-        <div>
-          <span class="text-sm font-semibold text-amber-700 uppercase tracking-wide">
-            {{ p.categorie }}
-          </span>
-          <h1 class="text-3xl font-bold text-gray-800 mt-2">
-            {{ p.nom }}
-          </h1>
-          <p class="text-gray-600 mt-4">
-            {{ p.description }}
-          </p>
-          <div class="mt-4 text-sm text-gray-500 space-y-1">
-            <p><strong>Artisan :</strong> {{ p.artisan }}</p>
-            <p><strong>Région :</strong> {{ p.regionOrigine }}</p>
-            <p><strong>Date d'ajout :</strong> {{ p.dateAjout | date:'dd/MM/yyyy' }}</p>
-          </div>
+
+      <div class="mt-6">
+        <p class="text-3xl font-bold text-emerald-800">
+          {{ p.prix }} DT
+        </p>
+        <p class="text-sm text-green-600 font-semibold mb-2">
+          Stock disponible : {{ p.stock }}
+        </p>
+
+        <button (click)="afficherFormulaireCommande.set(true)" [class.bg-emerald-700]="p.disponible && p.stock > 0"
+          [class.bg-gray-400]="!p.disponible || p.stock === 0"
+          [class.cursor-not-allowed]="!p.disponible || p.stock === 0" [disabled]="!p.disponible || p.stock === 0"
+          class="mt-4 w-full text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity">
+
+          {{ p.stock === 0 ? 'Rupture de stock' : (p.disponible ? 'Ajouter au panier' : 'Indisponible') }}
+
+        </button>
+
+        @if (afficherFormulaireCommande()) {
+        <div class="mt-4 p-4 bg-stone-50 rounded-lg border border-gray-200">
+          <h4 class="font-bold text-gray-700 mb-3">Finaliser la commande</h4>
+
+          @if (messageSucces()) {
+          <p class="text-green-600 font-bold mb-3 text-sm">{{ messageSucces() }}</p>
+          }
+
+          <form [formRoot]="commandeForm" (submit)="commander()" class="space-y-3">
+
+
+            <div>
+              <input type="text" [formField]="commandeForm.nomClient" placeholder="Votre nom complet"
+                class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 text-sm focus:outline-none">
+              @if (commandeForm.nomClient().invalid() && commandeForm.nomClient().touched()) {
+              <p class="text-red-500 text-xs mt-1">{{ commandeForm.nomClient().errors()[0]?.message }}</p>
+              }
+            </div>
+
+            <div>
+              <input type="email" [formField]="commandeForm.emailClient" placeholder="Votre adresse email"
+                class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 text-sm focus:outline-none">
+              @if (commandeForm.emailClient().invalid() && commandeForm.emailClient().touched()) {
+              <p class="text-red-500 text-xs mt-1">{{ commandeForm.emailClient().errors()[0]?.message }}</p>
+              }
+            </div>
+
+            <div>
+              <label class="text-sm font-semibold text-gray-600 block mb-1">Quantité :</label>
+              <input type="number" [formField]="commandeForm.quantite"
+                class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 text-sm focus:outline-none">
+              @if (commandeForm.quantite().invalid() && commandeForm.quantite().touched()) {
+              <p class="text-red-500 text-xs mt-1">{{ commandeForm.quantite().errors()[0]?.message }}</p>
+              }
+            </div>
+
+            <button type="submit" [disabled]="commandeForm().invalid()"
+              class="w-full bg-emerald-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition">
+              Confirmer la commande
+            </button>
+          </form>
         </div>
-        <div class="mt-6">
-          <p class="text-3xl font-bold text-amber-700">
-            {{ p.prix }} DT
-          </p>
-          <button 
-            [class.bg-amber-600]="p.disponible"
-            [class.bg-gray-400]="!p.disponible"
-            [class.cursor-not-allowed]="!p.disponible"
-            [disabled]="!p.disponible"
-            class="mt-4 w-full text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity">
-            {{ p.disponible ? 'Ajouter au panier' : 'Rupture de stock' }}
-          </button>
-        </div>
+        }
       </div>
     </div>
-    <div class="mt-8 border-t pt-6">
-      <h3 class="text-xl font-bold text-gray-800 mb-4">Avis des clients</h3>
-      
-      @if (p.avis.length > 0) {
-        <div class="space-y-4">
-          @for (avis of p.avis; track avis.id) {
-            <div class="bg-gray-50 p-4 rounded-lg">
-              <div class="flex justify-between items-center mb-2">
-                <span class="font-bold text-gray-700">{{ avis.nomClient }}</span>
-                <span class="text-amber-500 text-lg">{{ avis.note | star }}</span>
-              </div>
-              <p class="text-gray-600 text-sm">{{ avis.commentaire }}</p>
-              <p class="text-xs text-gray-400 mt-2">{{ avis.date | date:'dd/MM/yyyy' }}</p>
-            </div>
-          }
+  </div>
+
+  <div class="mt-8 border-t pt-6">
+    <h3 class="text-xl font-bold text-gray-800 mb-4">Avis des clients</h3>
+
+    @if (p.avis.length > 0) {
+    <div class="space-y-4">
+      @for (avis of p.avis; track avis.id) {
+      <div class="bg-stone-50 p-4 rounded-lg">
+        <div class="flex justify-between items-center mb-2">
+          <span class="font-bold text-gray-700">{{ avis.nomClient }}</span>
+          <span class="text-yellow-500 text-lg">{{ avis.note | star }}</span>
         </div>
-      } @else {
-        <p class="text-gray-500 italic">Aucun avis pour le moment. Soyez le premier à donner votre avis !</p>
+        <p class="text-gray-600 text-sm">{{ avis.commentaire }}</p>
+        <p class="text-xs text-gray-400 mt-2">{{ avis.date | date:'dd/MM/yyyy' }}</p>
+      </div>
       }
     </div>
-    <div class="mt-6 bg-white p-4 rounded-lg border border-gray-200">
-      <h4 class="font-bold text-gray-700 mb-3">Laisser un avis</h4>
-      
-      <div class="space-y-3">
-        <input type="text" [(ngModel)]="nouveauNom" placeholder="Votre nom" 
-               class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500">
-               
-        <select [(ngModel)]="nouvelleNote" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500">
-          <option [value]="5">5 étoiles (Excellent)</option>
-          <option [value]="4">4 étoiles (Très bien)</option>
-          <option [value]="3">3 étoiles (Bien)</option>
-          <option [value]="2">2 étoiles (Moyen)</option>
-          <option [value]="1">1 étoile (Mauvais)</option>
-        </select>
+    } @else {
+    <p class="text-gray-500 italic">Aucun avis pour le moment. Soyez le premier à donner votre avis !</p>
+    }
+  </div>
 
-        <textarea [(ngModel)]="nouveauCommentaire" placeholder="Votre commentaire..." rows="2"
-                  class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500"></textarea>
 
-        <button (click)="ajouterAvis()" 
-                class="bg-amber-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-700 transition">
-          Publier l'avis
-        </button>
-      </div>
+  <div class="mt-6 bg-white p-4 rounded-lg border border-gray-200">
+    <h4 class="font-bold text-gray-700 mb-3">Laisser un avis</h4>
+
+    <div class="space-y-3">
+      <input type="text" [(ngModel)]="nouveauNom" placeholder="Votre nom"
+        class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+
+      <select [(ngModel)]="nouvelleNote" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
+        <option [value]="5">5 étoiles (Excellent)</option>
+        <option [value]="4">4 étoiles (Très bien)</option>
+        <option [value]="3">3 étoiles (Bien)</option>
+        <option [value]="2">2 étoiles (Moyen)</option>
+        <option [value]="1">1 étoile (Mauvais)</option>
+      </select>
+
+      <textarea [(ngModel)]="nouveauCommentaire" placeholder="Votre commentaire..." rows="2"
+        class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500"></textarea>
+
+      <button (click)="onAjouterAvis()"
+        class="bg-emerald-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-800 transition">
+        Publier l'avis
+      </button>
     </div>
+  </div>
 
   } @else {
-    <div class="text-center py-20">
-      <p class="text-gray-500 text-xl mb-4">Produit introuvable</p>
-    </div>
+  <div class="text-center py-20">
+    <p class="text-gray-500 text-xl mb-4">Produit introuvable</p>
+  </div>
   }
 
   <div class="mt-6 text-center">
-    <button (click)="retourliste()" class="text-amber-700 hover:underline font-semibold cursor-pointer">
+    <button (click)="retourliste()" class="text-emerald-800 hover:underline font-semibold cursor-pointer">
       Retour à la liste
     </button>
   </div>

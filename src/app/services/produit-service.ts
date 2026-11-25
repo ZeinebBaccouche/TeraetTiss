@@ -2,7 +2,9 @@ import { computed, inject, Service, signal } from '@angular/core';
 import { Produit } from '../interfaces/produit';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { DemandeAchat } from '../interfaces/demande-achat';
 const URL = 'http://localhost:3000/produits'
+const URL_demandes = 'http://localhost:3000/demandesAchat'
 @Service()
 export class ProduitService {
     //private produitssignal = signal<Produit[]>([
@@ -207,5 +209,58 @@ export class ProduitService {
         });
     }
 
+    ajouterDemande(demande: DemandeAchat): Observable<DemandeAchat> {
+        return this._http.post<DemandeAchat>(URL_demandes, demande);
+    }
+
+    getDemandes(): Observable<DemandeAchat[]> {
+        return this._http.get<DemandeAchat[]>(URL_demandes);
+    }
+
+    mettreAJourStatutDemande(demande: DemandeAchat, nouveauStatut: string): Observable<DemandeAchat> {
+        const demandeModifiee = { ...demande, statut: nouveauStatut };
+        return this._http.put<DemandeAchat>(`${URL_demandes}/${demande.id}`, demandeModifiee);
+    }
+
+    MettreAJourProduit(produit: Produit): Observable<Produit> {
+        return this._http.put<Produit>(`${URL}/${produit.id}`, produit).pipe(
+            tap(data => {
+                this._produitssignal.update(produits => produits.map(p => p.id === data.id ? data : p)
+                );
+            })
+        );
+    }
+
+    deleteProduit(id: string): Observable<void> {
+        return this._http.delete<void>(`${URL}/${id}`).pipe(
+            tap(() => this._produitssignal.update(allProducts =>
+                allProducts.filter(p => p.id !== id)
+            ))
+        );
+    }
+
+    ajouterProduit(produit: Produit): Observable<Produit> {
+        return this._http.post<Produit>(URL, produit).pipe(
+            tap(data => {
+                this._produitssignal.update(produits => [...produits, data]);
+            })
+        );
+    }
+
+    mettreAJourStock(produitId: string, nouvelleQuantite: number): Observable<Produit> {
+        const produit = this._produitssignal().find(p => p.id === produitId);
+        const produitModifie = { ...produit, stock: nouvelleQuantite };
+        return this._http.put<Produit>(`${URL}/${produitId}`, produitModifie).pipe(
+            tap(data => {
+                this._produitssignal.update(produits =>
+                    produits.map(p => p.id === produitId ? data : p)
+                );
+            })
+        );
+    }
+
+
 
 }
+
+

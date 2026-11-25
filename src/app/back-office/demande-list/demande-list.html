@@ -1,0 +1,64 @@
+<div class="p-6 max-w-7xl mx-auto">
+  <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Demandes d'achat</h1>
+  <p class="text-gray-500 mb-8">Gérez les commandes passées par vos clients.</p>
+
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-gray-100 text-gray-600 text-sm uppercase tracking-wider">
+          <tr>
+            <th class="px-6 py-4 font-semibold">Client</th>
+            <th class="px-6 py-4 font-semibold">Produit</th>
+            <th class="px-6 py-4 font-semibold text-center">Quantité</th>
+            <th class="px-6 py-4 font-semibold">Prix Total</th>
+            <th class="px-6 py-4 font-semibold">Date</th>
+            <th class="px-6 py-4 font-semibold text-center">Statut</th>
+            <th class="px-6 py-4 font-semibold text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-gray-700">
+          
+          @for (d of demandes(); track d.id) {
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-6 py-4">
+                <p class="font-bold text-gray-900">{{ d.nomClient }}</p>
+                <p class="text-xs text-gray-500">{{ d.emailClient }}</p>
+              </td>
+            
+              <td class="px-6 py-4 font-semibold">{{ d.nomProduit }}</td>
+              <td class="px-6 py-4 text-center">
+                <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded font-bold text-sm">{{ d.quantite }}</span>
+              </td>
+              <td class="px-6 py-4 font-bold text-amber-700">{{ d.prixTotal }} DT</td>
+            
+              <td class="px-6 py-4 text-sm">{{ d.dateDemande | date:'dd/MM/yyyy' }}</td>
+              
+              <td class="px-6 py-4 text-center">
+                <span [class]="d.statut === 'En attente' ? 'bg-amber-100 text-amber-700' : 'bg-green-100 text-green-700'" 
+                      class="px-3 py-1 text-xs font-bold rounded-full">
+                  {{ d.statut }}
+                </span>
+              </td>
+
+              <td class="px-6 py-4 text-center">
+                <button (click)="changerStatut(d)"
+                        [class]="d.statut === 'En attente' ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-400 hover:bg-gray-500'"
+                        class="px-3 py-1.5 text-xs font-bold text-white rounded transition">
+                  {{ d.statut === 'En attente' ? 'Marquer Traitée' : 'Remettre En attente' }}
+                </button>
+              </td>
+
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="7" class="px-6 py-10 text-center text-gray-500 italic">
+                Aucune demande d'achat pour le moment.
+              </td>
+            </tr>
+          }
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
